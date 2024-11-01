@@ -6,10 +6,11 @@ Este repositório contém uma atividade prática da matéria de Interfaces Ricas
 
 ## Descrição da atividade
 
-A atividade consiste em realizar os seguintes passos:
+A atividade consiste em realizar os passos a seguir utilizando o GitHub Flow:
 
-1. Crie uma issue para identificar o problema a ser resolvido.
-2. Crie uma branch para implementar a solução.
-3. Crie um arquivo devcontainer.json para configurar a imagem e as extensões  do visual code que você utiliza em seu projeto. Adicione pelo menos DUAS extensões do visual code.
-4. Quando concluir a criação do arquivo, verifique que o codespace é criado corretamente sem falhas.
-5. Crie um pull request no Github e realize o merge da branch.
+1. Criar uma issue descrevendo a tarefa a ser realizada.
+2. Criar uma branch para trabalhar na issue.
+3. Realizar commits semânticos à medida que a tarefa é realizada.
+4. Abrir um pull request para revisão das mudanças.
+5. Realizar o merge do pull request na branch principal.
+
