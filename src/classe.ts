@@ -1,3 +1,7 @@
+export interface Veiculo {
+    acelerar(): string;
+}
+
 export class Carro {
     modelo: string;
     velocidadeAtual: number;
