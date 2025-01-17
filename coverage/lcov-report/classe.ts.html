@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for funcoes.ts</title>
+    <title>Code coverage report for classe.ts</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="prettify.css" />
     <link rel="stylesheet" href="base.css" />
@@ -19,34 +19,34 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="index.html">All files</a> funcoes.ts</h1>
+        <h1><a href="index.html">All files</a> classe.ts</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>29/29</span>
+                <span class='fraction'>28/28</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>9/9</span>
+                <span class='fraction'>4/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>6/6</span>
+                <span class='fraction'>4/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>29/29</span>
+                <span class='fraction'>28/28</span>
             </div>
         
             
@@ -94,8 +94,6 @@
 <a name='L29'></a><a href='#L29'>29</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -119,35 +117,37 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span></td><td class="text"><pre class="prettyprint lang-js">export const squareElements = (array: number[]): number[] =&gt; { //calcula o ² dos elementos 
-    let result: number[] = [];
-    for (let i = 0; i &lt; array.length; i++) {
-        result.push(array[i] ** 2);
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">export class Carro {
+    modelo: string;
+    velocidadeAtual: number;
+&nbsp;
+    constructor(modelo: string, velocidadeAtual: number) {
+        this.modelo = modelo;
+        this.velocidadeAtual = velocidadeAtual;
     }
-    return result;
-};
 &nbsp;
-export const squareElementsForEach = (array: number[]): number[] =&gt; { // calculates the square of elements using forEach
-    let result: number[] = []; //result pode ser modificado 
-    array.forEach((item) =&gt; result.push(item ** 2));
-    return result;
-};
+    acelerar(): string {
+        this.velocidadeAtual += 10;
+        return `${this.modelo} está agora a ${this.velocidadeAtual} km/h.`;
+    }
+}
 &nbsp;
-export const joinStrings = (array: string[]): string =&gt; { //concatena as strings
-    return array.join(" ");
-};
+export class Moto {
+    marca: string;
+    cilindrada: number;
 &nbsp;
-export const sortArray = (array: string[]): string[] =&gt; { //ordem alfabética
-    return array.sort();
-};
+    constructor(marca: string, cilindrada: number) {
+        this.marca = marca;
+        this.cilindrada = cilindrada;
+    }
 &nbsp;
-export const firstTwoElements = (array: number[]): number[] =&gt; { // retorna os 2 primeiros 
-    return array.slice(0, 2);
-};
-&nbsp;
-export const filterEvenNumbers = (array: number[]): number[] =&gt; { // filtra os pares
-    return array.filter((num) =&gt; num % 2 === 0);
-};</pre></td></tr></table></pre>
+    acelerar(): string {
+        return `${this.marca} com ${this.cilindrada}cc está acelerando!`;
+    }
+}
+&nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
             </div><!-- /wrapper -->
