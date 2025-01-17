@@ -2,7 +2,7 @@ export interface Veiculo {
     acelerar(): string;
 }
 
-export class Carro {
+export class Carro implements Veiculo {
     modelo: string;
     velocidadeAtual: number;
 
@@ -17,7 +17,7 @@ export class Carro {
     }
 }
 
-export class Moto {
+export class Moto implements Veiculo {
     marca: string;
     cilindrada: number;
 
