@@ -11,3 +11,5 @@ test('Teste do método acelerar da classe Moto', () => {
     const result = moto.acelerar();
     expect(result).toBe('Yamaha com 600cc está acelerando!');
 });
+
+
