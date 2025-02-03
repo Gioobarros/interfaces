@@ -5,8 +5,9 @@ import { ProdutoService } from './produto.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
+  styleUrls: [],
 })
+
 export class AppComponent {
   produtos: Produto[] = [];
   produto: Produto = { id: undefined, nome: '', preco: undefined, disponivel: false };
@@ -33,8 +34,13 @@ export class AppComponent {
     });
   }
 
-  editarProduto(id: number) {
-    console.log('Editar produto com ID:', id);
+  editarProduto(id: number | undefined) {
+    if (id !== undefined) {
+      console.log('Editar produto com ID:', id);
+      // Aqui você pode adicionar a lógica para editar o produto, como abrir um formulário de edição.
+    } else {
+      console.error('ID do produto é indefinido. Não é possível editar.');
+    }
   }
 
   removerProduto(id: number) {

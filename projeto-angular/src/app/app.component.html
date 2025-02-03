@@ -18,14 +18,12 @@
 
 <h2>Lista de Produtos</h2>
 <mat-list>
-  @for (produto of produtos; track produto.id) {
-    <mat-list-item>
-      {{ produto.nome }} - R$ {{ produto.preco }} - Disponível: {{ produto.disponivel }}
-      <button mat-button (click)="editarProduto(produto.id)">Editar</button>
-      <button mat-button (click)="removerProduto(produto.id)">Remover</button>
-      <button mat-button (click)="mostrarDetalhes(produto)">Detalhes</button>
-    </mat-list-item>
-  }
+  <mat-list-item *ngFor="let produto of produtos">
+    {{ produto.nome }} - R$ {{ produto.preco }} - Disponível: {{ produto.disponivel }}
+    <button mat-button (click)="editarProduto(produto.id)">Editar</button>
+    <button mat-button (click)="removerProduto(produto.id)">Remover</button>
+    <button mat-button (click)="mostrarDetalhes(produto)">Detalhes</button>
+  </mat-list-item>
 </mat-list>
 
 <div class="detalhes" *ngIf="produtoSelecionado">

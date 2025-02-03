@@ -18,7 +18,7 @@ import { ProdutoService } from './produto.service';
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
-    CommonModule,
+    CommonModule, // Adicione esta linha
     MatFormFieldModule,
     MatInputModule,
     MatCheckboxModule,
