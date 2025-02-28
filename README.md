@@ -1,16 +1,36 @@
-# Atividade de Interfaces Ricas 
+# CRUD utilizando Angular 
 
-## Configuração de Dev Container para o projeto 
+Este projeto é um CRUD simples desenvolvido em **Angular** utilizando **Angular Material**.
 
-Este repositório contém uma atividade prática da matéria de Interfaces Ricas, para seguir as boas práticas do GitHub Flow, incluindo a criação de uma issue, desenvolvimento em uma nova branch, commits semânticos, criação de pull request, merge na branch principal e configuração do arquivo devcontainer.json.
+## 📌 Funcionalidades
+- 📄 Listar produtos
+- ➕ Adicionar produtos
+- ✏️ Atualizar produtos
+- 🗑️ Remover produtos
 
-## Descrição da atividade
+## ✅ Requisitos do Projeto
+- Criar um projeto Angular no repositório GitHub.
+- Escolher e incluir uma biblioteca de componentes de UI Angular no projeto.
+- Criar operações de inserir, atualizar, remover e listar um modelo usando componentes de UI.
+- O modelo deve conter pelo menos três atributos: **string, número e booleano**.
 
-A atividade consiste em realizar os passos a seguir utilizando o GitHub Flow:
+## 🛠️ Instalação e Execução
 
-1. Criar uma issue descrevendo a tarefa a ser realizada.
-2. Criar uma branch para trabalhar na issue.
-3. Realizar commits semânticos à medida que a tarefa é realizada.
-4. Abrir um pull request para revisão das mudanças.
-5. Realizar o merge do pull request na branch principal.
+### 1. Clone o repositório
+```sh
+git clone https://github.com/gioobarros/crud-angular.git
+cd crud-angular
+```
+
+### 2. Instale as dependências
+```sh
+npm install
+```
+
+### 3. Execute o projeto
+```sh
+ng serve
+```
+Acesse no navegador: **http://localhost:4200**
+
 

@@ -1,0 +1,43 @@
+<div class="card">
+  <p-toast></p-toast>
+  
+  <p-card header="Detalhes do Produto" *ngIf="produto">
+    <div class="grid">
+      <div class="col-12 md:col-6">
+        <div class="p-field">
+          <label class="font-bold block mb-2">ID:</label>
+          <div>{{produto.id}}</div>
+        </div>
+      </div>
+      
+      <div class="col-12 md:col-6">
+        <div class="p-field">
+          <label class="font-bold block mb-2">Status:</label>
+          <p-toast [severity]="getSeverity(produto.ativo)" ... ></p-toast>
+        </div>
+      </div>
+      
+      <div class="col-12">
+        <div class="p-field mt-3">
+          <label class="font-bold block mb-2">Nome:</label>
+          <div class="text-xl">{{produto.nome}}</div>
+        </div>
+      </div>
+      
+      <div class="col-12">
+        <div class="p-field mt-3">
+          <label class="font-bold block mb-2">Preço:</label>
+          <div class="text-xl">{{produto.preco | currency:'BRL'}}</div>
+        </div>
+      </div>
+    </div>
+    
+    <p-divider></p-divider>
+    
+    <div class="flex justify-content-end gap-2">
+      <button pButton pRipple label="Voltar" icon="pi pi-arrow-left" class="p-button-outlined" (click)="voltar()"></button>
+      <button pButton pRipple label="Editar" icon="pi pi-pencil" (click)="editarProduto()"></button>
+    </div>
+  </p-card>
+</div>
+
