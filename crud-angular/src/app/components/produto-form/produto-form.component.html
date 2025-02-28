@@ -1,33 +1,32 @@
 <div class="card">
-    <p-toast></p-toast>
+  <p-toast></p-toast>
+  
+  <p-card [header]="formTitle">
+    <div class="formgrid grid">
+      <div class="field col-12">
+        <label for="nome" class="font-bold">Nome</label>
+        <input id="nome" type="text" pInputText class="w-full" [(ngModel)]="produto.nome" required />
+      </div>
+      
+      <div class="field col-12 md:col-6">
+        <label for="preco" class="font-bold">Preço</label>
+        <p-inputNumber id="preco" [(ngModel)]="produto.preco" mode="currency" currency="BRL" locale="pt-BR" [minFractionDigits]="2" class="w-full"></p-inputNumber>
+      </div>
+      
+      <div class="field col-12 md:col-6 flex align-items-center">
+        <div class="flex align-items-center">
+          <p-checkbox [(ngModel)]="produto.ativo" [binary]="true" inputId="ativo"></p-checkbox>
+          <label for="ativo" class="ml-2 font-bold">Produto Ativo</label>
+        </div>
+      </div>
+    </div>
     
-    <p-card [header]="formTitle">
-      <div class="formgrid grid">
-        <div class="field col-12">
-          <label for="nome" class="font-bold">Nome</label>
-          <input id="nome" type="text" pInputText class="w-full" [(ngModel)]="produto.nome" required />
-        </div>
-        
-        <div class="field col-12 md:col-6">
-          <label for="preco" class="font-bold">Preço</label>
-          <p-inputNumber id="preco" [(ngModel)]="produto.preco" mode="currency" currency="BRL" locale="pt-BR" [minFractionDigits]="2" class="w-full"></p-inputNumber>
-        </div>
-        
-        <div class="field col-12 md:col-6 flex align-items-center">
-          <div class="flex align-items-center">
-            <p-checkbox [(ngModel)]="produto.ativo" [binary]="true" inputId="ativo"></p-checkbox>
-            <label for="ativo" class="ml-2 font-bold">Produto Ativo</label>
-          </div>
-        </div>
-      </div>
-      
-      <p-divider></p-divider>
-      
-      <div class="flex justify-content-end gap-2">
-        <button pButton pRipple label="Cancelar" icon="pi pi-times" class="p-button-outlined" (click)="voltar()"></button>
-        <button pButton pRipple label="Salvar" icon="pi pi-check" (click)="salvar()"></button>
-      </div>
-    </p-card>
-  </div>
-  
-  
+    <p-divider></p-divider>
+    
+    <div class="flex justify-content-end gap-2">
+      <button pButton pRipple label="Cancelar" icon="pi pi-times" class="p-button-outlined" (click)="voltar()"></button>
+      <button pButton pRipple label="Salvar" icon="pi pi-check" (click)="salvar()"></button>
+    </div>
+  </p-card>
+</div>
+

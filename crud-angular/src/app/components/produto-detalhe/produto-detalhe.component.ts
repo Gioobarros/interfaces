@@ -13,10 +13,11 @@ import { DividerModule } from "primeng/divider"
 import { TagModule } from "primeng/tag"
 
 @Component({
-    selector: "app-produto-detalhe",
-    imports: [CommonModule, CardModule, ButtonModule, ToastModule, DividerModule, TagModule],
-    templateUrl: "./produto-detalhe.component.html",
-    styleUrls: ["./produto-detalhe.component.scss"]
+  selector: "app-produto-detalhe",
+  standalone: true,
+  imports: [CommonModule, CardModule, ButtonModule, ToastModule, DividerModule, TagModule],
+  templateUrl: "./produto-detalhe.component.html",
+  styleUrls: ["./produto-detalhe.component.scss"],
 })
 export class ProdutoDetalheComponent implements OnInit {
   produto?: Produto

@@ -1,21 +1,6 @@
-import { Component } from '@angular/core';
-
-@Component({
-  selector: 'app-produto-lista',
-  imports: [],
-  templateUrl: './produto-lista.component.html',
-  styleUrl: './produto-lista.component.scss'
-})
-export class ProdutoListaComponent {
-
-}
-export interface Produto {
-  id: number;
-  nome: string;
-  preco: number;
-  ativo: boolean;
-}import { Component, type OnInit } from "@angular/core"
+import { Component, type OnInit } from "@angular/core"
 import { CommonModule } from "@angular/common"
+import { FormsModule } from "@angular/forms"
 import type { Router } from "@angular/router"
 import type { Produto } from "../../models/produto"
 import type { ProdutoService } from "../../services/produto.service"
@@ -31,19 +16,21 @@ import { ToolbarModule } from "primeng/toolbar"
 import { InputTextModule } from "primeng/inputtext"
 
 @Component({
-    selector: "app-produto-lista",
-    imports: [
-        CommonModule,
-        TableModule,
-        ButtonModule,
-        ToastModule,
-        ConfirmDialogModule,
-        TagModule,
-        ToolbarModule,
-        InputTextModule,
-    ],
-    templateUrl: "./produto-lista.component.html",
-    styleUrls: ["./produto-lista.component.scss"]
+  selector: "app-produto-lista",
+  standalone: true,
+  imports: [
+    CommonModule,
+    FormsModule,
+    TableModule,
+    ButtonModule,
+    ToastModule,
+    ConfirmDialogModule,
+    TagModule,
+    ToolbarModule,
+    InputTextModule,
+  ],
+  templateUrl: "./produto-lista.component.html",
+  styleUrls: ["./produto-lista.component.scss"],
 })
 export class ProdutoListaComponent implements OnInit {
   produtos: Produto[] = []

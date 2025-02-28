@@ -1,19 +1,19 @@
 import { Component } from "@angular/core"
 import { CommonModule } from "@angular/common"
 import { RouterOutlet } from "@angular/router"
-import { ProdutoListaComponent } from "./components/produto-lista/produto-lista.component"
 
 @Component({
-    selector: "app-root",
-    imports: [CommonModule, RouterOutlet, ProdutoListaComponent],
-    template: `
+  selector: "app-root",
+  standalone: true,
+  imports: [CommonModule, RouterOutlet],
+  template: `
     <div class="container">
       <h1 class="my-4 text-center">Sistema de Gerenciamento de Produtos</h1>
       <router-outlet></router-outlet>
     </div>
   `,
-    styles: [
-        `
+  styles: [
+    `
     :host {
       display: block;
       font-family: var(--font-family);
@@ -25,7 +25,7 @@ import { ProdutoListaComponent } from "./components/produto-lista/produto-lista.
       padding: 1rem;
     }
   `,
-    ]
+  ],
 })
 export class AppComponent {
   title = "crud-angular"

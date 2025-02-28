@@ -16,20 +16,21 @@ import { ToastModule } from "primeng/toast"
 import { DividerModule } from "primeng/divider"
 
 @Component({
-    selector: "app-produto-form",
-    imports: [
-        CommonModule,
-        FormsModule,
-        CardModule,
-        InputTextModule,
-        InputNumberModule,
-        CheckboxModule,
-        ButtonModule,
-        ToastModule,
-        DividerModule,
-    ],
-    templateUrl: "./produto-form.component.html",
-    styleUrls: ["./produto-form.component.scss"]
+  selector: "app-produto-form",
+  standalone: true,
+  imports: [
+    CommonModule,
+    FormsModule,
+    CardModule,
+    InputTextModule,
+    InputNumberModule,
+    CheckboxModule,
+    ButtonModule,
+    ToastModule,
+    DividerModule,
+  ],
+  templateUrl: "./produto-form.component.html",
+  styleUrls: ["./produto-form.component.scss"],
 })
 export class ProdutoFormComponent implements OnInit {
   produto: Produto = {
