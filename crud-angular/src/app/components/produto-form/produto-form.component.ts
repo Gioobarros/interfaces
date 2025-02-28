@@ -1,128 +1,81 @@
-import { Component, OnInit } from "@angular/core"
+import { Component,  OnInit } from "@angular/core"
 import { CommonModule } from "@angular/common"
-import { FormsModule } from "@angular/forms"
+import { ReactiveFormsModule, FormBuilder,  FormGroup, Validators } from "@angular/forms"
 import { ActivatedRoute, Router } from "@angular/router"
-import { Produto } from "../../models/produto"
-import { ProdutoService } from "../../services/produto.service"
-import { MessageService } from "primeng/api"
-
-// PrimeNG Components
-import { CardModule } from "primeng/card"
-import { InputTextModule } from "primeng/inputtext"
-import { InputNumberModule } from "primeng/inputnumber"
-import { CheckboxModule } from "primeng/checkbox"
-import { ButtonModule } from "primeng/button"
-import { ToastModule } from "primeng/toast"
-import { DividerModule } from "primeng/divider"
+import { ProdutoService, Produto } from "../../services/produto.service"
 
 @Component({
   selector: "app-produto-form",
   standalone: true,
-  imports: [
-    CommonModule,
-    FormsModule,
-    CardModule,
-    InputTextModule,
-    InputNumberModule,
-    CheckboxModule,
-    ButtonModule,
-    ToastModule,
-    DividerModule,
-  ],
-  templateUrl: "./produto-form.component.html",
-  styleUrls: ["./produto-form.component.scss"],
+  imports: [CommonModule, ReactiveFormsModule],
+  template: `
+    <h2>{{ isEditing ? 'Editar' : 'Novo' }} Produto</h2>
+    <form [formGroup]="produtoForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="nome">Nome</label>
+        <input type="text" class="form-control" id="nome" formControlName="nome">
+      </div>
+      <div class="form-group">
+        <label for="preco">Preço</label>
+        <input type="number" class="form-control" id="preco" formControlName="preco">
+      </div>
+      <div class="form-check mb-3">
+        <input type="checkbox" class="form-check-input" id="ativo" formControlName="ativo">
+        <label class="form-check-label" for="ativo">Ativo</label>
+      </div>
+      <button type="submit" class="btn btn-primary" [disabled]="produtoForm.invalid">Salvar</button>
+      <button type="button" class="btn btn-secondary ml-2" (click)="cancelar()">Cancelar</button>
+    </form>
+  `,
 })
 export class ProdutoFormComponent implements OnInit {
-  produto: Produto = {
-    id: 0,
-    nome: "",
-    preco: 0,
-    ativo: true,
-  }
-
-  isEdicao = false
-  formTitle = "Novo Produto"
+  produtoForm: FormGroup
+  isEditing = false
 
   constructor(
+    private fb: FormBuilder,
     private produtoService: ProdutoService,
     private route: ActivatedRoute,
     private router: Router,
-    private messageService: MessageService,
-  ) {}
+  ) {
+    this.produtoForm = this.fb.group({
+      id: [null],
+      nome: ["", Validators.required],
+      preco: [0, [Validators.required, Validators.min(0)]],
+      ativo: [true],
+    })
+  }
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get("id")
     if (id) {
-      this.isEdicao = true
-      this.formTitle = "Editar Produto"
-      this.carregarProduto(+id)
+      this.isEditing = true
+      this.produtoService.getProduto(+id).subscribe((produto) => {
+        if (produto) {
+          this.produtoForm.patchValue(produto)
+        } else {
+          this.router.navigate(["/produtos"])
+        }
+      })
     }
   }
 
-  carregarProduto(id: number): void {
-    this.produtoService.getProduto(id).subscribe((produto) => {
-      if (produto) {
-        this.produto = { ...produto }
+  onSubmit(): void {
+    if (this.produtoForm.valid) {
+      const produto: Produto = this.produtoForm.value
+      if (this.isEditing) {
+        this.produtoService.updateProduto(produto).subscribe(() => {
+          this.router.navigate(["/produtos"])
+        })
       } else {
-        this.messageService.add({
-          severity: "error",
-          summary: "Erro",
-          detail: "Produto não encontrado!",
+        this.produtoService.addProduto(produto).subscribe(() => {
+          this.router.navigate(["/produtos"])
         })
-        this.voltar()
       }
-    })
-  }
-
-  salvar(): void {
-    if (!this.validarFormulario()) {
-      return
-    }
-
-    if (this.isEdicao) {
-      this.produtoService.updateProduto(this.produto).subscribe(() => {
-        this.messageService.add({
-          severity: "success",
-          summary: "Sucesso",
-          detail: "Produto atualizado com sucesso!",
-        })
-        this.voltar()
-      })
-    } else {
-      this.produtoService.addProduto(this.produto).subscribe(() => {
-        this.messageService.add({
-          severity: "success",
-          summary: "Sucesso",
-          detail: "Produto adicionado com sucesso!",
-        })
-        this.voltar()
-      })
     }
   }
 
-  validarFormulario(): boolean {
-    if (!this.produto.nome.trim()) {
-      this.messageService.add({
-        severity: "error",
-        summary: "Erro",
-        detail: "Nome do produto é obrigatório!",
-      })
-      return false
-    }
-
-    if (this.produto.preco <= 0) {
-      this.messageService.add({
-        severity: "error",
-        summary: "Erro",
-        detail: "Preço deve ser maior que zero!",
-      })
-      return false
-    }
-
-    return true
-  }
-
-  voltar(): void {
+  cancelar(): void {
     this.router.navigate(["/produtos"])
   }
 }

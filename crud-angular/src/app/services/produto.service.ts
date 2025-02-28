@@ -27,7 +27,7 @@ export class ProdutoService {
   }
 
   addProduto(produto: Produto): Observable<Produto> {
-    produto.id = this.produtos.length + 1
+    produto.id = Math.max(...this.produtos.map((p) => p.id), 0) + 1
     this.produtos.push(produto)
     return of(produto)
   }
