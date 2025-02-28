@@ -41,7 +41,7 @@
         <td>{{produto.nome}}</td>
         <td>{{produto.preco | currency:'BRL'}}</td>
         <td>
-          <p-tag [value]="produto.ativo ? 'Ativo' : 'Inativo'" [severity]="getSeverity(produto.ativo)"></p-tag>
+          <p-tag [value]="produto.ativo ? 'success' : 'danger'" [severity]="getSeverity(produto.ativo)"></p-tag>
         </td>
         <td>
           <div class="flex gap-2">

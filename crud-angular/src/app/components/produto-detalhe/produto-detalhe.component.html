@@ -13,7 +13,7 @@
       <div class="col-12 md:col-6">
         <div class="p-field">
           <label class="font-bold block mb-2">Status:</label>
-          <p-tag [value]="produto.ativo ? 'Ativo' : 'Inativo'" [severity]="getSeverity(produto.ativo)"></p-tag>
+          <p-toast [severity]="getSeverity(produto.ativo)" ... ></p-toast>
         </div>
       </div>
       

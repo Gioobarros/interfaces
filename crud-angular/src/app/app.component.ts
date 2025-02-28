@@ -8,21 +8,16 @@ import { RouterOutlet } from "@angular/router"
   imports: [CommonModule, RouterOutlet],
   template: `
     <div class="container">
-      <h1 class="my-4 text-center">Sistema de Gerenciamento de Produtos</h1>
+      <h1>CRUD de Produtos</h1>
       <router-outlet></router-outlet>
     </div>
   `,
   styles: [
     `
-    :host {
-      display: block;
-      font-family: var(--font-family);
-    }
-    
     .container {
-      max-width: 1200px;
+      max-width: 800px;
       margin: 0 auto;
-      padding: 1rem;
+      padding: 20px;
     }
   `,
   ],

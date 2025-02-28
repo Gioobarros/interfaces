@@ -1,9 +1,9 @@
-import { Component, type OnInit } from "@angular/core"
+import { Component, OnInit } from "@angular/core"
 import { CommonModule } from "@angular/common"
-import type { ActivatedRoute, Router } from "@angular/router"
-import type { Produto } from "../../models/produto"
-import type { ProdutoService } from "../../services/produto.service"
-import type { MessageService } from "primeng/api"
+import { ActivatedRoute, Router } from "@angular/router"
+import { Produto } from "../../models/produto"
+import { ProdutoService } from "../../services/produto.service"
+import { MessageService } from "primeng/api"
 
 // PrimeNG Components
 import { CardModule } from "primeng/card"
@@ -63,8 +63,8 @@ export class ProdutoDetalheComponent implements OnInit {
     this.router.navigate(["/produtos"])
   }
 
-  getSeverity(ativo: boolean): string {
-    return ativo ? "success" : "danger"
+  // Correção de retorno da função
+  getSeverity(ativo: boolean): 'success' | 'info' | 'warn' | 'danger' | undefined {
+    return ativo ? 'success' : 'danger'; // 'Ativo' = 'success' e 'Inativo' ='danger'
   }
 }
-

@@ -1,0 +1,49 @@
+<div>
+    <button (click)="novoProduto()" class="btn btn-primary">Adicionar produto</button>
+  
+    <table class="table table-striped mt-3">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nome</th>
+          <th>Preço</th>
+          <th>Ativo</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let produto of produtos">
+          <td>{{ produto.id }}</td>
+          <td>{{ produto.nome }}</td>
+          <td>{{ produto.preco | currency:'BRL' }}</td>
+          <td>{{ produto.ativo ? 'Sim' : 'Não' }}</td>
+          <td>
+            <button (click)="selecionarProduto(produto)" class="btn btn-sm btn-info mr-2">Editar</button>
+            <button (click)="deletarProduto(produto.id)" class="btn btn-sm btn-danger">Excluir</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <div *ngIf="novoOuEditando" class="mt-4">
+      <h2>{{ produtoSelecionado?.id ? 'Editar' : 'Novo' }} Produto</h2>
+      <form (ngSubmit)="salvarProduto()">
+        <div class="form-group">
+          <label for="nome">Nome</label>
+          <input type="text" class="form-control" id="nome" [(ngModel)]="produtoSelecionado!.nome" name="nome" required>
+        </div>
+        <div class="form-group">
+          <label for="preco">Preço</label>
+          <input type="number" class="form-control" id="preco" [(ngModel)]="produtoSelecionado!.preco" name="preco" required>
+        </div>
+        <div class="form-check mb-3">
+          <input type="checkbox" class="form-check-input" id="ativo" [(ngModel)]="produtoSelecionado!.ativo" name="ativo">
+          <label class="form-check-label" for="ativo">Ativo</label>
+        </div>
+        <button type="submit" class="btn btn-success mr-2">Salvar</button>
+        <button type="button" (click)="cancelar()" class="btn btn-secondary">Cancelar</button>
+      </form>
+    </div>
+  </div>
+  
+  

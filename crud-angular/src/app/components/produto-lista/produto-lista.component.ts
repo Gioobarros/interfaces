@@ -1,10 +1,10 @@
-import { Component, type OnInit } from "@angular/core"
+import { Component, OnInit } from "@angular/core"
 import { CommonModule } from "@angular/common"
 import { FormsModule } from "@angular/forms"
-import type { Router } from "@angular/router"
-import type { Produto } from "../../models/produto"
-import type { ProdutoService } from "../../services/produto.service"
-import type { ConfirmationService, MessageService } from "primeng/api"
+import { Router } from "@angular/router"
+import { Produto } from "../../models/produto"
+import { ProdutoService } from "../../services/produto.service"
+import { ConfirmationService, MessageService } from "primeng/api"
 
 // PrimeNG Components
 import { TableModule } from "primeng/table"
@@ -84,7 +84,7 @@ export class ProdutoListaComponent implements OnInit {
       this.messageService.add({
         severity: "success",
         summary: "Sucesso",
-        detail: "Produto removido com sucesso!",
+        detail: "Produto removido.",
       })
     })
   }

@@ -1,10 +1,10 @@
-import { Component, type OnInit } from "@angular/core"
+import { Component, OnInit } from "@angular/core"
 import { CommonModule } from "@angular/common"
 import { FormsModule } from "@angular/forms"
-import type { ActivatedRoute, Router } from "@angular/router"
-import type { Produto } from "../../models/produto"
-import type { ProdutoService } from "../../services/produto.service"
-import type { MessageService } from "primeng/api"
+import { ActivatedRoute, Router } from "@angular/router"
+import { Produto } from "../../models/produto"
+import { ProdutoService } from "../../services/produto.service"
+import { MessageService } from "primeng/api"
 
 // PrimeNG Components
 import { CardModule } from "primeng/card"
