@@ -31,20 +31,19 @@ import { ToolbarModule } from "primeng/toolbar"
 import { InputTextModule } from "primeng/inputtext"
 
 @Component({
-  selector: "app-produto-lista",
-  standalone: true,
-  imports: [
-    CommonModule,
-    TableModule,
-    ButtonModule,
-    ToastModule,
-    ConfirmDialogModule,
-    TagModule,
-    ToolbarModule,
-    InputTextModule,
-  ],
-  templateUrl: "./produto-lista.component.html",
-  styleUrls: ["./produto-lista.component.scss"],
+    selector: "app-produto-lista",
+    imports: [
+        CommonModule,
+        TableModule,
+        ButtonModule,
+        ToastModule,
+        ConfirmDialogModule,
+        TagModule,
+        ToolbarModule,
+        InputTextModule,
+    ],
+    templateUrl: "./produto-lista.component.html",
+    styleUrls: ["./produto-lista.component.scss"]
 })
 export class ProdutoListaComponent implements OnInit {
   produtos: Produto[] = []
