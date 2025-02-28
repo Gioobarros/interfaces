@@ -1,70 +1,50 @@
 import { Component, OnInit } from "@angular/core"
 import { CommonModule } from "@angular/common"
-import { ActivatedRoute, Router } from "@angular/router"
-import { Produto } from "../../models/produto"
-import { ProdutoService } from "../../services/produto.service"
-import { MessageService } from "primeng/api"
-
-// PrimeNG Components
-import { CardModule } from "primeng/card"
-import { ButtonModule } from "primeng/button"
-import { ToastModule } from "primeng/toast"
-import { DividerModule } from "primeng/divider"
-import { TagModule } from "primeng/tag"
+import { ActivatedRoute, Router, RouterModule } from "@angular/router"
+import { ProdutoService, Produto } from "../../services/produto.service"
 
 @Component({
   selector: "app-produto-detalhe",
   standalone: true,
-  imports: [CommonModule, CardModule, ButtonModule, ToastModule, DividerModule, TagModule],
-  templateUrl: "./produto-detalhe.component.html",
-  styleUrls: ["./produto-detalhe.component.scss"],
+  imports: [CommonModule, RouterModule],
+  template: `
+    <div *ngIf="produto">
+      <h2>Detalhes do Produto</h2>
+      <dl>
+        <dt>ID:</dt>
+        <dd>{{ produto.id }}</dd>
+        <dt>Nome:</dt>
+        <dd>{{ produto.nome }}</dd>
+        <dt>Preço:</dt>
+        <dd>{{ produto.preco | currency:'BRL' }}</dd>
+        <dt>Ativo:</dt>
+        <dd>{{ produto.ativo ? 'Sim' : 'Não' }}</dd>
+      </dl>
+      <a [routerLink]="['/produtos/editar', produto.id]" class="btn btn-primary">Editar</a>
+      <button (click)="voltar()" class="btn btn-secondary ml-2">Voltar</button>
+    </div>
+  `,
 })
 export class ProdutoDetalheComponent implements OnInit {
-  produto?: Produto
+  produto: Produto | undefined
 
   constructor(
     private produtoService: ProdutoService,
     private route: ActivatedRoute,
     private router: Router,
-    private messageService: MessageService,
   ) {}
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get("id")
     if (id) {
-      this.carregarProduto(+id)
-    } else {
-      this.voltar()
-    }
-  }
-
-  carregarProduto(id: number): void {
-    this.produtoService.getProduto(id).subscribe((produto) => {
-      if (produto) {
+      this.produtoService.getProduto(+id).subscribe((produto) => {
         this.produto = produto
-      } else {
-        this.messageService.add({
-          severity: "error",
-          summary: "Erro",
-          detail: "Produto não encontrado!",
-        })
-        this.voltar()
-      }
-    })
-  }
-
-  editarProduto(): void {
-    if (this.produto) {
-      this.router.navigate(["/produtos/editar", this.produto.id])
+      })
     }
   }
 
   voltar(): void {
     this.router.navigate(["/produtos"])
   }
-
-  // Correção de retorno da função
-  getSeverity(ativo: boolean): 'success' | 'info' | 'warn' | 'danger' | undefined {
-    return ativo ? 'success' : 'danger'; // 'Ativo' = 'success' e 'Inativo' ='danger'
-  }
 }
+
